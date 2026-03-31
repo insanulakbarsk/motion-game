@@ -767,7 +767,7 @@ export default function MonsterSlayer() {
         {screen === 'title' && (
           <div className={styles.titleOverlay}>
             <div className={styles.titleBox}>
-              <div className={styles.titleMain}>MONSTER<br/>SLAYER</div>
+              <div className={styles.titleMain}>LIBRARY INSANUL<br />MONSTER<br/>SLAYER</div>
               <div className={styles.titleSub}>AR MOTION COMBAT · ENDLESS WAVE</div>
               <div className={styles.titleDivider} />
               <div className={styles.titleInstructions}>
