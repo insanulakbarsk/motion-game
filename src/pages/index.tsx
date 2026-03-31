@@ -754,7 +754,7 @@ export default function MonsterSlayer() {
         {screen === 'loading' && (
           <div className={styles.loadOverlay}>
             <div className={styles.loadBox}>
-              <div className={styles.loadTitle}>MONSTER<br />SLAYER</div>
+              <div className={styles.loadTitle}>LIBRARY INSANUL<br />MONSTER<br />SLAYER</div>
               <div className={styles.loadSub}>AR MOTION COMBAT ENGINE</div>
               <div className={styles.loadBarWrap}><div className={styles.loadBar} style={{ width: `${loadProgress}%` }} /></div>
               <div className={styles.loadPct}>{loadProgress}%</div>
