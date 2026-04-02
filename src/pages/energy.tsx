@@ -245,14 +245,16 @@ export default function EnergyMeter() {
         })
 
         let last = 0
-        async function frame(ts: number) {
-          if (destroyed) return
-          if (ts - last > 80 && videoRef.current!.readyState >= 2) {
-            last = ts
-            await hands.send({ image: videoRef.current! }).catch(() => {})
-          }
-          rafId = requestAnimationFrame(frame)
-        }
+        const frame = async (ts: number) => {
+  if (destroyed) return
+
+  if (ts - last > 80 && videoRef.current!.readyState >= 2) {
+    last = ts
+    await hands.send({ image: videoRef.current! }).catch(() => {})
+  }
+
+  rafId = requestAnimationFrame(frame)
+}
         rafId = requestAnimationFrame(frame)
 
         setLoadPct(100)
