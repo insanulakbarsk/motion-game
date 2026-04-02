@@ -696,16 +696,22 @@ export default function MonsterSlayer() {
         let lastSend = 0;
         let rafId2 = 0;
         let frameCount2 = 0;
-        async function sendFrame2(ts: number) {
-          if (destroyed) return;
-          if (ts - lastSend > 66 && vid.readyState >= 2) {
-            lastSend = ts;
-            frameCount2++;
-            if (frameCount2 % 2 === 0) await hands.send({ image: vid }).catch(() => {});
-            else await face.send({ image: vid }).catch(() => {});
-          }
-          rafId2 = requestAnimationFrame(sendFrame2);
-        }
+       const sendFrame2 = async (ts: number) => {
+  if (destroyed) return;
+
+  if (ts - lastSend > 66 && vid.readyState >= 2) {
+    lastSend = ts;
+    frameCount2++;
+
+    if (frameCount2 % 2 === 0) {
+      await hands.send({ image: vid }).catch(() => {});
+    } else {
+      await face.send({ image: vid }).catch(() => {});
+    }
+  }
+
+  rafId2 = requestAnimationFrame(sendFrame2);
+};
         rafId2 = requestAnimationFrame(sendFrame2);
 
         setLoadProgress(100); setLoadStep('Ready!');
