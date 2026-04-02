@@ -100,7 +100,10 @@ export default function EnergyMeter() {
       // ── Motion detection & scoring ──
       if (ph === 'measuring') {
         let delta = 0
-        function d2(a: Vec2, b: Vec2) { return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2) }
+        // function d2(a: Vec2, b: Vec2) { return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2) }
+         const d2 = (a: Vec2, b: Vec2) => {
+    return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
+  }
 
         if (hands.left && pH.left) {
           const d = d2(hands.left, pH.left)
