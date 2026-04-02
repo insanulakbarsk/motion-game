@@ -392,14 +392,16 @@ export default function StandupTimer() {
 
         // Step 3: feed frames to MediaPipe via RAF — no Camera util needed
         let lastSend = 0;
-        async function sendFrame(ts: number) {
-          if (destroyed) return;
-          if (ts - lastSend > 80 && vid.readyState >= 2) {
-            lastSend = ts;
-            await hands.send({ image: vid }).catch(() => {});
-          }
-          rafId = requestAnimationFrame(sendFrame);
-        }
+        const sendFrame = async (ts: number) => {
+  if (destroyed) return;
+
+  if (ts - lastSend > 80 && vid.readyState >= 2) {
+    lastSend = ts;
+    await hands.send({ image: vid }).catch(() => {});
+  }
+
+  rafId = requestAnimationFrame(sendFrame);
+};
         rafId = requestAnimationFrame(sendFrame);
 
         setLoadProgress(100);
